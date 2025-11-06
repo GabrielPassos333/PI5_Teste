@@ -11,7 +11,7 @@ export const analyzeImage = async (imageUri: string): Promise<AnalysisResult> =>
   try {
     // Converter imagem para base64
     const base64 = await FileSystem.readAsStringAsync(imageUri, {
-      encoding: FileSystem.EncodingType.Base64,
+      encoding: 'base64',
     });
 
     // Fazer requisição para Gemini API

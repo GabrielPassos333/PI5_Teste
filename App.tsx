@@ -35,6 +35,10 @@ export default function App() {
   // Processar foto capturada
   const handlePhotoCapture = async (uri: string) => {
     setShowCamera(false);
+    
+    // Pequeno delay para garantir que a câmera fecha antes de mostrar loading
+    await new Promise(resolve => setTimeout(resolve, 100));
+    
     setIsAnalyzing(true);
 
     const result = await analyzeImage(uri);
@@ -53,17 +57,6 @@ export default function App() {
   const handleCloseResult = () => {
     setShowResultModal(false);
     setResultText('');
-    setShowCamera(false);
-    setIsAnalyzing(false);
-  };
-
-  // Nova análise
-  const handleNewAnalysis = () => {
-    setShowResultModal(false);
-    setResultText('');
-    setShowCamera(false);
-    setIsAnalyzing(false);
-    setTimeout(() => handleOpenCamera(), 300);
   };
 
   // Renderizar tela apropriada
